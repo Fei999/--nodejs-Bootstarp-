@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+        <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="css.css" />
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+        <!-- <script src="file.js"></script> -->
+        <style>
+            .wrap{
+                width: 100%;
+                height: 100%;
+                border: 3px solid #666;
+                overflow: hidden;
+            }
+            .top{
+                width:100%;
+                height:100px;
+                background: red;
+            }
+            .left{
+                width:30%;
+                height:300px;
+                background: lime;
+                float: left;
+            }
+            .right{
+                width:60%;
+                height:300px;
+                background: pink;
+                float: left;
+            }
+            .info{
+                margin-left: 16.66666667%;
+                width: 83.33333333%;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">模板功能 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">我们的团队</a></li>
+            <li><a href="#">项目展示</a></li>
+            <li><a href="#">我们的服务</a></li>
+            <li><a href="#">新闻</a></li>
+          </ul>
+        </div>
+        <div class="tab">
+          <div class="info col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="display:block">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                Launch demo modal
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      标题：<input type="text" class="title" /><br>
+                      字体：<input type="text" class="class" /><br>
+                      内容：
+                          <div id="summernote">Hello Summernote</div>
+                          <div class="box"></div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                       <button type="button" class="qr btn btn-primary" data-dismiss="modal">确认修改</button>
+                      <button type="button" class="btn11 btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <h2 class="sub-header">模本功能</h2>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>title</th>
+                    <th>com</th>
+                    <th>字体图标</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody1"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="info col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+                Launc
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      img：<input type="file" onchange="getFiles(this)" class="img2" /><button class="btn_flie">提交</button><br>
+                      name：<input type="text" class="name2" /><br>
+                      职位：<input type="text" class="zhiwei2" /><br>
+                      简介：
+                          <div id="summernote2">Hello Summernote</div>
+                          <div class="box"></div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="pr2 btn btn-primary" data-dismiss="modal">确认修改</button>
+                      <button type="button" class="btn22 btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <h2 class="sub-header">我们的团队</h2>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>name</th>
+                    <th>logo</th>
+                    <th>zhiwei</th>
+                    <th>js</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody2"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="info col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal3">
+                Launch demo modal
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      <select class="sel" onchange="gai3()">
+                          <option value="1">活动策划</option>
+                          <option value="2">画册设计</option>
+                          <option value="3">电影宣传片制作</option>
+                      </select><br>
+                      <input type="file" onchange="getFile3(this)" class="img3" /><button class="btn_flie3">提交</button><br>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="qr3 btn btn-default" data-dismiss="modal">确认修改</button>
+                      <button type="button" class="btn33 btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <h2 class="sub-header">项目展示</h2>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>uid</th>
+                    <th>img</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody class="body3"></tbody>
+              </table>
+            </div>
+          </div>
+
+          
+          <div class="info col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <!-- Button trigger modal -->
+               <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal4">
+                Launch demo modal
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      标题：<input type="text" class="title4" /><br>
+                      字体：<input type="text" class="class4" /><br>
+                      内容：
+                          <div id="summernote4">Hello Summernote</div>
+                          <div class="box"></div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                       <button type="button" class="qr4 btn btn-primary" data-dismiss="modal">确认修改</button>
+                      <button type="button" class="btn44 btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <h2 class="sub-header">我们的服务</h2>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>title</th>
+                    <th>com</th>
+                    <th>class</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody class="tbody4"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="info col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <!-- Button trigger modal -->
+               <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal5">
+                Launch demo modal
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      标题：<input type="text" class="title5" /><br>
+                      内容：
+                          <div id="summernote5">Hello Summernote</div>
+                          <div class="box"></div>
+                          <select class="select">
+                            <option value="1">通知公告</option>
+                            <option value="2">招考政策</option>
+                          </select>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                       <button type="button" class="qr5 btn btn-primary" data-dismiss="modal">确认修改</button>
+                      <button type="button" class="btn55 btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <h2 class="sub-header">新闻</h2>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>uid</th>
+                    <th>title</th>
+                    <th>con</th>
+                     <th>time</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody class="tbody5"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <script>
+            $(function(){
+                $(function(){
+                  $(".nav li").click(function(){
+                    var i=$(this).index();
+                    $(this).addClass("active").siblings().removeClass("active");
+                    $(".tab .info").eq(i).fadeIn().siblings().hide();
+                  })
+                })
+                
+                $('#summernote').summernote();
+                $('#summernote2').summernote();
+                $('#summernote3').summernote();
+                $('#summernote4').summernote();
+                $('#summernote5').summernote();
+                ajax()
+                $(".btn11").click(function(){
+                    var tit=$(".title").val();
+                    var cl=$(".class").val();
+                    var con=$('#summernote').summernote('code');
+                    $.ajax({
+                        url:"http://localhost:3000/con",
+                        type:"POST",
+                        data:{
+                            tit:tit,
+                            con:con,
+                            cl:cl
+                        },
+                        success:function(d){
+                          ajax()
+                        },
+                        error:function(){
+                            console.log("服务器错误")
+                        }
+                    })
+                })
+            })
+            //修改
+            function gai(){
+              $(".xiugai").click(function(){
+                var id=$(this).attr("data-id");
+                $(".qr").attr("data-qq",id)
+                $.ajax({
+                  url:"http://localhost:3000/gai",
+                  type:"POST",
+                  data:{gai:id},
+                  success:function(d){
+                    $(".title").attr('value',d[0].title);
+                    $(".class").attr('value',d[0].class);
+                    $('#summernote').summernote('code',d[0].con);
+                  }
+                })
+              })
+            }
+            //确认修改
+              $(".qr").click(function(){
+                var id=$(this).attr("data-qq");
+                var tit=$(".title").val();
+                var cl=$(".class").val();
+                var con=$('#summernote').summernote('code');
+                $.ajax({
+                  url:"http://localhost:3000/qrgai",
+                  type:"POST",
+                  data:{
+                        tit:tit,
+                        con:con,
+                        id:id,
+                        cl:cl
+                      },
+                  success:function(d){
+                    ajax();
+                  }
+                })
+              })
+//删除
+function clk(){
+  $(".delete").click(function(){
+    var dataid=$(this).attr("data-id")
+    var _this=$(this)
+    $.ajax({
+    url:"http://localhost:3000/delete",
+    type:"POST",
+    data:{id:dataid},
+    success:function(d){
+      _this.parent().parent().remove();
+    }
+  })
+})
+}
+function ajax(){
+  $.ajax({
+    url:"http://localhost:3000/tr",
+    type:"POST",
+    success:function(d){
+    var str="";
+    for(i in d){
+    str+=`<tr><td>${d[i].id}</td><td>${d[i].title}</td><td>${d[i].con}</td><td>${d[i].class}</td><td><button data-id=${d[i].id}  class="xiugai" data-toggle="modal" data-target="#myModal">修改</button><button class="delete" data-id=${d[i].id}>删除</button></td></tr>`
+    }
+    $("#tbody1").html(str);
+      clk()
+      gai()
+    },
+    error:function(){
+      console.log("服务器错误")
+    }
+  })
+}
+//我们的团队
+              ajax2()
+                $(".btn22").click(function(){
+                    var name=$(".name2").val();
+                    var zhiwei=$(".zhiwei2").val();
+                    var con=$('#summernote').summernote('code');
+                    $.ajax({
+                        url:"http://localhost:3000/our/con",
+                        type:"POST",
+                        data:{
+                            name:name,
+                            zhiwei:zhiwei,
+                            con:con
+                        },
+                        success:function(d){
+                          ajax2()
+                        },
+                        error:function(){
+                            console.log("服务器错误")
+                        }
+                    })
+                })
+            //img
+            var file;
+             function getFiles (el) {
+               file=el.files //获取文件属性
+               console.log(file)
+            }
+            $(".btn_flie").click(function(){
+                    var fd = new FormData();
+                    for(var i = 0;i<file.length;i++){
+                        fd.append('files',file[i])
+                    }
+                     //console.log(fd)
+                    $.ajax({
+                        url:'http://localhost:3000/our/img',
+                        type:'POST',
+                        data:fd,
+                        contentType:false,
+                        processData:false,
+                        success:function(e){
+                            console.log(e)
+                        }
+                    }) 
+            })
+            // })
+            //修改
+            function gai2(){
+              $(".xiugai2").click(function(){
+                var id=$(this).attr("data-id");
+                $(".pr2").attr("data-cc",id)
+                //console.log(id)
+                $.ajax({
+                  url:"http://localhost:3000/our/gai",
+                  type:"POST",
+                  data:{gai:id},
+                  success:function(d){
+                    $(".name2").attr('value',d[0].name);
+                    $(".zhiwei2").attr('value',d[0].zhiwei);
+                    $('#summernote2').summernote('code',d[0].jj);
+                  }
+                })
+              })
+            }
+            // //确认修改
+              $(".pr2").click(function(){
+                var id=$(this).attr("data-cc");
+                var name=$(".name2").val();
+                var zhiwei=$(".zhiwei2").val();
+                var con=$('#summernote2').summernote('code');
+                $.ajax({
+                  url:"http://localhost:3000/our/qrgai",
+                  type:"POST",
+                  data:{
+                        name:name,
+                        zhiwei:zhiwei,
+                        con:con,
+                        id:id
+                      },
+                  success:function(d){
+                    ajax2();
+                     // location.reload() 
+                  }
+
+                })
+              })
+//删除
+function clk2(){
+  $(".delete2").click(function(){
+    var dataid=$(this).attr("data-id")
+    var _this=$(this)
+    $.ajax({
+    url:"http://localhost:3000/our/delete",
+    type:"POST",
+    data:{id:dataid},
+    success:function(d){
+      _this.parent().parent().remove();
+    }
+  })
+})
+}
+function ajax2(){
+  $.ajax({
+    url:"http://localhost:3000/our/tr",
+    type:"POST",
+    success:function(d){ 
+    var str="";
+    for(i in d){
+    str+=`<tr><td>${d[i].id}</td><td>${d[i].name}</td><td>${d[i].img}</td><td>${d[i].zhiwei}</td><td>${d[i].jj}</td><td><button data-id=${d[i].id}  class="xiugai2" data-toggle="modal" data-target="#myModal2">修改</button><button class="delete2" data-id=${d[i].id}>删除</button></td></tr>`
+    }
+    $("#tbody2").html(str);
+      clk2()
+      gai2()
+    },
+    error:function(){
+      console.log("服务器错误")
+    }
+  })
+}
+//项目展示
+              ajax3()
+                $(".btn33").click(function(){
+                    var sel=$(".sel option:selected").val();
+                    $.ajax({
+                        url:"http://localhost:3000/projects/con",
+                        type:"POST",
+                        data:{
+                            sel:sel
+                        },
+                        success:function(d){
+                          console.log(d)
+                          ajax3()
+                        },
+                        error:function(){
+                            console.log("服务器错误")
+                        }
+                    }) 
+                })
+            //img
+            var file;
+             function getFile3 (el) {
+               file=el.files //获取文件属性
+               console.log(file)
+            }
+            $(".btn_flie3").click(function(){
+                    var fd = new FormData();
+                    for(var i = 0;i<file.length;i++){
+                        fd.append('files',file[i])
+                    }
+                     console.log(fd)
+                    $.ajax({
+                        url:'http://localhost:3000/projects/img',
+                        type:'POST',
+                        data:fd,
+                        contentType:false,
+                        processData:false,
+                        success:function(e){
+                            console.log(e)
+                        }
+                    }) 
+            })
+            //修改
+            function gai3(){
+              $(".xiugai3").click(function(){
+                var id=$(this).attr("data-id");
+                $(".qr3").attr("data-rr",id)
+                //console.log(id)
+                $.ajax({
+                  url:"http://localhost:3000/projects/gai",
+                  type:"POST",
+                  data:{gai:id},
+                  success:function(d){
+                    //console.log(d)
+                    $('.tit3').attr("value",d[0].tit)
+                    $('.sel').attr("value",d[0].uid)
+                  }
+                })
+              })
+            }
+            // //确认修改
+              $(".qr3").click(function(){
+                var id=$(this).attr("data-rr");
+                var uid=$(".sel").val();   
+                //option的value值
+                //console.log(uid)       
+                $.ajax({
+                  url:"http://localhost:3000/projects/qrgai",
+                  type:"POST",
+                  data:{
+                        id:id,
+                        uid:uid
+                      },
+                  success:function(d){
+                    ajax3();
+                  }
+                })
+              })
+//删除
+function clk3(){
+  $(".delete3").click(function(){
+    var dataid=$(this).attr("data-id")
+    var _this=$(this)
+    $.ajax({
+    url:"http://localhost:3000/Projects/delete",
+    type:"POST",
+    data:{id:dataid},
+    success:function(d){
+      _this.parent().parent().remove();
+    }
+  })
+})
+}
+function ajax3(){
+  $.ajax({
+    url:"http://localhost:3000/Projects/tr",
+    type:"POST",
+    success:function(d){
+      console.log(d)
+    var str="";
+    for(i in d){
+    str+=`<tr><td>${d[i].id}</td><td>${d[i].uid}</td><td>${d[i].img}</td><td><button data-id=${d[i].id}  class="xiugai3" data-toggle="modal" data-target="#myModal3">修改</button><button class="delete3" data-id=${d[i].id}>删除</button></td></tr>`
+    }
+    $(".body3").html(str);
+      clk3()
+      gai3()
+    },
+    error:function(){
+      console.log("服务器错误")
+    }
+  })
+}
+//我们的服务
+                ajax4()
+                $(".btn44").click(function(){
+                    var tit=$(".title4").val();
+                    var cl=$(".class4").val();
+                    var con=$('#summernote4').summernote('code');
+                    $.ajax({
+                        url:"http://localhost:3000/services/con",
+                        type:"POST",
+                        data:{
+                            tit:tit,
+                            con:con,
+                            cl:cl
+                        },
+                        success:function(d){
+                          ajax4()
+                        },
+                        error:function(){
+                            console.log("服务器错误")
+                        }
+                    })
+                })
+            
+            //修改
+            function gai4(){
+              $(".xiugai4").click(function(){
+                var id=$(this).attr("data-id");
+                $(".qr4").attr("data-qq",id)
+                console.log(id)
+                $.ajax({
+                  url:"http://localhost:3000/services/gai",
+                  type:"POST",
+                  data:{gai:id},
+                  success:function(d){
+                    //console.log(d)
+                    $(".title4").attr('value',d[0].title);
+                    $(".class4").attr('value',d[0].class);
+                    $('#summernote4').summernote('code',d[0].con);
+                  }
+                })
+              })
+            }
+            //确认修改
+              $(".qr4").click(function(){
+                var id=$(this).attr("data-qq");
+                var tit=$(".title4").val();
+                var cl=$(".class4").val();
+                var con=$('#summernote4').summernote('code');
+                $.ajax({
+                  url:"http://localhost:3000/services/qrgai",
+                  type:"POST",
+                  data:{
+                        tit:tit,
+                        con:con,
+                        id:id,
+                        cl:cl
+                      },
+                  success:function(d){
+                    ajax4();
+                  }
+                })
+              })
+//删除
+function clk4(){
+  $(".delete4").click(function(){
+    var dataid=$(this).attr("data-id")
+    var _this=$(this)
+    $.ajax({
+    url:"http://localhost:3000/services/delete",
+    type:"POST",
+    data:{id:dataid},
+    success:function(d){
+      _this.parent().parent().remove();
+    }
+  })
+})
+}
+function ajax4(){
+  $.ajax({
+    url:"http://localhost:3000/services/tr",
+    type:"POST",
+    success:function(d){
+    var str="";
+    for(i in d){
+    str+=`<tr><td>${d[i].id}</td><td>${d[i].title}</td><td>${d[i].con}</td><td>${d[i].class}</td><td><button data-id=${d[i].id}  class="xiugai4" data-toggle="modal" data-target="#myModal4">修改</button><button class="delete4" data-id=${d[i].id}>删除</button></td></tr>`
+    }
+    $(".tbody4").html(str);
+      clk4()
+      gai4()
+    },
+    error:function(){
+      console.log("服务器错误")
+    }
+  })
+}
+  ajax5()
+  $('#summernote5').summernote();
+  $(".btn55").click(function(){
+  var tit=$(".title5").val();
+  var time=new Date().toString().substr(10,15);
+  var con=$('#summernote5').summernote('code');
+  var op=$(".select").val();
+  $.ajax({
+    url:"http://localhost:3000/news/con",
+    type:"POST",
+    data:{
+      tit:tit,
+      time:time,
+      con:con,
+      op:op
+    },
+    success:function(d){
+      ajax5()
+    },
+    error:function(){
+      console.log("服务器错误")
+    }
+  })
+  })
+
+ //修改
+            function gai5(){
+              $(".xiugai5").click(function(){
+                var id=$(this).attr("data-id");
+                $(".qr5").attr("data-qq",id)
+                console.log(id)
+                $.ajax({
+                  url:"http://localhost:3000/news/gai",
+                  type:"POST",
+                  data:{gai:id},
+                  success:function(d){
+                    $(".title5").attr('value',d[0].tit);
+                    $(".select").attr('value',d[0].uid);
+                    $('#summernote5').summernote('code',d[0].con);
+                  }
+                })
+              })
+            }
+            //确认修改
+              $(".qr5").click(function(){
+                var id=$(this).attr("data-qq");
+                var tit=$(".title5").val();
+                var con=$('#summernote5').summernote('code');
+                var op=$(".select").val();
+                $.ajax({
+                  url:"http://localhost:3000/news/qrgai",
+                  type:"POST",
+                  data:{
+                        tit:tit,
+                        con:con,
+                        id:id,
+                        op:op
+                      },
+                  success:function(d){
+                    ajax5();
+                  }
+                })
+              })
+
+//删除
+function clk5(){
+  $(".delete5").click(function(){
+    var dataid=$(this).attr("data-id")
+    var _this=$(this)
+    $.ajax({
+    url:"http://localhost:3000/news/delete",
+    type:"POST",
+    data:{id:dataid},
+    success:function(d){
+      _this.parent().parent().remove();
+    }
+  })
+})
+}
+function ajax5(){
+  $.ajax({
+    url:"http://localhost:3000/news/tr",
+    type:"POST",
+    success:function(d){
+    var str="";
+    for(i in d){
+      str+=`<tr><td>${d[i].id}</td><td>${d[i].uid}</td><td>${d[i].tit}</td><td>${d[i].con}</td><td>${d[i].time}</td><td><button data-id=${d[i].id}  class="xiugai5" data-toggle="modal" data-target="#myModal5">修改</button><button class="delete5" data-id=${d[i].id}>删除</button></td></tr>`
+    }
+    $(".tbody5").html(str);
+      clk5()
+      gai5()
+    },
+    error:function(){
+      console.log("服务器错误")
+    }
+  })
+}
+
+        </script>
+    </body>
+</html>
